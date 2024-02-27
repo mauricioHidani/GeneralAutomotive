@@ -6,7 +6,7 @@ public enum Offices {
     LOGISTICS_ADMINISTRATOR,
     DEMAND_PLANNING_SPECIALIST;
 
-    public Offices toEnum(String str) {
+    public static Offices toEnum(String str) {
         for (Offices office : Offices.values()) {
             if (office.toString().equals(str)) {
                 return office;
