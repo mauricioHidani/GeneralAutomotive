@@ -19,33 +19,39 @@ public class Order implements Serializable {
     private static final long serialVersionUID = -6000799533832033236L;
 
     @Id @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id;
+    private final UUID id;
 
     @Enumerated(EnumType.STRING)
     @Column(length = 128)
-    private OrderStatus status;
+    private final OrderStatus status;
 
     @Column(columnDefinition = "TEXT")
-    private String description;
+    private final String description;
 
     @Temporal(TemporalType.TIMESTAMP)
-    private Instant registered;
+    private final Instant registered;
 
     @ManyToOne
     @JoinColumn(name = "liable_id")
-    private Administrator liable;
+    private final Administrator liable;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "inventory",
             joinColumns = @JoinColumn(name = "order_id"),
             inverseJoinColumns = @JoinColumn(name = "product_id"))
-    private Set<Product> inventory = new HashSet<Product>();
+    private final Set<Product> inventory = new HashSet<>();
 
     protected Order() {
+        this.id = null;
+        this.status = null;
+        this.description = null;
+        this.registered = null;
+        this.liable = null;
     }
 
     public Order(OrderStatus status, String description, Instant registered, Administrator liable) {
+        this.id = null;
         this.status = status;
         this.description = description;
         this.registered = registered;
