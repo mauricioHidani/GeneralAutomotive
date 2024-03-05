@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.mh</groupId>
-	<artifactId>gaim-administrative</artifactId>
+	<artifactId>ga-administrative</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>gaim-administrative</name>
+	<name>general-automotive-administrative</name>
 	<description>Service Administrative</description>
 	<properties>
 		<java.version>21</java.version>

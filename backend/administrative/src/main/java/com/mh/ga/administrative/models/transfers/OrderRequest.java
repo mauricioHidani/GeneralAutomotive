@@ -1,7 +1,7 @@
-package com.mh.gaimadministrative.models.transfers;
+package com.mh.ga.administrative.models.transfers;
 
-import com.mh.gaimadministrative.models.entities.Order;
-import com.mh.gaimadministrative.models.enums.OrderStatus;
+import com.mh.ga.administrative.models.entities.Order;
+import com.mh.ga.administrative.models.enums.OrderStatus;
 
 import java.time.Instant;
 import java.util.Set;

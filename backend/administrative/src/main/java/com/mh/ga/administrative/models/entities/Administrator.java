@@ -1,6 +1,6 @@
-package com.mh.gaimadministrative.models.entities;
+package com.mh.ga.administrative.models.entities;
 
-import com.mh.gaimadministrative.models.enums.Offices;
+import com.mh.ga.administrative.models.enums.Offices;
 import jakarta.persistence.*;
 
 import java.io.Serial;

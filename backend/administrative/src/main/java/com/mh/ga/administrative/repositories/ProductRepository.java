@@ -1,6 +1,6 @@
-package com.mh.gaimadministrative.repositories;
+package com.mh.ga.administrative.repositories;
 
-import com.mh.gaimadministrative.models.entities.Product;
+import com.mh.ga.administrative.models.entities.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

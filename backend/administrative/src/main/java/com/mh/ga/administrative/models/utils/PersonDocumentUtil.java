@@ -1,4 +1,4 @@
-package com.mh.gaimadministrative.models.utils;
+package com.mh.ga.administrative.models.utils;
 
 import java.util.Arrays;
 import java.util.regex.Matcher;

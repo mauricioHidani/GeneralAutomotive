@@ -1,4 +1,4 @@
-package com.mh.gaimadministrative.models.enums;
+package com.mh.ga.administrative.models.enums;
 
 public enum OrderStatus {
 

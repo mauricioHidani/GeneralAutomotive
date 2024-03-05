@@ -1,6 +1,6 @@
-package com.mh.gaimadministrative.models.transfers;
+package com.mh.ga.administrative.models.transfers;
 
-import com.mh.gaimadministrative.models.entities.Product;
+import com.mh.ga.administrative.models.entities.Product;
 
 import java.math.BigDecimal;
 import java.util.UUID;

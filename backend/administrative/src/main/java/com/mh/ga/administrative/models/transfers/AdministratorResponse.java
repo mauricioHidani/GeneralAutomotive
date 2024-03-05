@@ -1,8 +1,8 @@
-package com.mh.gaimadministrative.models.transfers;
+package com.mh.ga.administrative.models.transfers;
 
-import com.mh.gaimadministrative.models.entities.Administrator;
-import com.mh.gaimadministrative.models.enums.Offices;
-import com.mh.gaimadministrative.models.utils.PersonDocumentUtil;
+import com.mh.ga.administrative.models.entities.Administrator;
+import com.mh.ga.administrative.models.enums.Offices;
+import com.mh.ga.administrative.models.utils.PersonDocumentUtil;
 
 import java.util.UUID;
 

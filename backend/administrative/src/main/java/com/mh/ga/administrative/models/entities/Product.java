@@ -1,4 +1,4 @@
-package com.mh.gaimadministrative.models.entities;
+package com.mh.ga.administrative.models.entities;
 
 import jakarta.persistence.*;
 
