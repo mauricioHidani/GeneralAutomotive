@@ -36,16 +36,17 @@ public class PersonDocumentUtil {
             if (i < 9) {
                 leftResp += digit * (i + 1);
             }
-            else if (i == 10) {
+            else if (i == 9) {
                 leftDigit = digit;
             }
 
             if (i < 10) {
                 rightResp += digit * i;
             }
-            else if (i == 11) {
+            else if (i == 10) {
                 rightDigit = digit;
             }
+            i++;
         }
 
         // Check Left Digit Is Valid
