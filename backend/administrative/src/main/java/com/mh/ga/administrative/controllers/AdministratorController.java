@@ -20,6 +20,11 @@ public class AdministratorController {
         this.service = service;
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<AdministratorResponse> findById(@PathVariable String id) {
+        throw new UnsupportedOperationException();
+    }
+
     @PostMapping
     public ResponseEntity<AdministratorResponse> save(@RequestBody AdministratorRequest request) {
         var response = service.save(request);
