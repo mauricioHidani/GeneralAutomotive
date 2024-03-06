@@ -19,7 +19,7 @@ public class AdministratorAdapterImpl implements AdministratorAdapter<Administra
     }
 
     @Override public Administrator findByDocument(String document) {
-        return null;
+        return repository.findByDocument(document);
     }
 
 }
