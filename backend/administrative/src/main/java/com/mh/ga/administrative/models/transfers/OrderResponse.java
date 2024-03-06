@@ -48,13 +48,13 @@ public record OrderResponse(
         );
     }
 
-    public static OrderResponse toResponse(OrderRequest request) {
+    public static OrderResponse toResponse(OrderRequest request, String id) {
         return new OrderResponse(
                 request.id(),
                 request.status(),
                 request.description(),
                 request.registered(),
-                AdministratorResponse.toResponse(request.liable()),
+                AdministratorResponse.toResponse(request.liable(), id),
                 request.inventory().stream()
                         .map(ProductResponse::toResponse)
                         .collect(Collectors.toSet())

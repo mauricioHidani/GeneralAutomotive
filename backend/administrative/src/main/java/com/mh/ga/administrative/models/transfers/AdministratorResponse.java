@@ -30,9 +30,9 @@ public record AdministratorResponse(
         );
     }
 
-    public static AdministratorResponse toResponse(AdministratorRequest request) {
+    public static AdministratorResponse toResponse(AdministratorRequest request, String id) {
         return new AdministratorResponse(
-                request.id(),
+                id,
                 PersonDocumentUtil.toHide(request.document()),
                 request.fullName(),
                 request.office()
