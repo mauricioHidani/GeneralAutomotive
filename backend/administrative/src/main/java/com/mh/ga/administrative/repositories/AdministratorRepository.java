@@ -8,4 +8,5 @@ import java.util.UUID;
 
 @Repository
 public interface AdministratorRepository extends JpaRepository<Administrator, UUID> {
+    Administrator findByDocument(String document);
 }
