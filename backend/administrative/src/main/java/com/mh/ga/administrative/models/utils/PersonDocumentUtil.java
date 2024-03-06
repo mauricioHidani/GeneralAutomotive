@@ -20,6 +20,13 @@ public class PersonDocumentUtil {
         return result.toString();
     }
 
+    public static boolean isHidden(String document) {
+        final String regex = "[*]{3}.\\d{3}.\\d{3}-[*]{2}";
+        final Pattern pattern = Pattern.compile(regex);
+        final Matcher matcher = pattern.matcher(document);
+        return  matcher.find();
+    }
+
     public static boolean isValid(String document) {
         final Pattern pattern = Pattern.compile("(\\d)");
         final Matcher matcher = pattern.matcher(document);
