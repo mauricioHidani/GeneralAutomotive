@@ -14,6 +14,7 @@ public class PersonDocumentUtil {
         while (matcher.find()) {
             result.append("***.");
             result.append(matcher.group(2));
+            result.append(".");
             result.append(matcher.group(3));
             result.append("-**");
         }
