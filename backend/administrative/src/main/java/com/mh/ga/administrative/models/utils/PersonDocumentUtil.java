@@ -25,7 +25,7 @@ public class PersonDocumentUtil {
         final String regex = "[*]{3}.\\d{3}.\\d{3}-[*]{2}";
         final Pattern pattern = Pattern.compile(regex);
         final Matcher matcher = pattern.matcher(document);
-        return  matcher.find();
+        return matcher.find();
     }
 
     public static boolean isValid(String document) {
