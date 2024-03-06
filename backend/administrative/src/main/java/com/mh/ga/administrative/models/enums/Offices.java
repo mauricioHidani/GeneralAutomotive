@@ -12,7 +12,7 @@ public enum Offices {
                 return office;
             }
         }
-        throw new IllegalArgumentException("The information for type Office validation is not valid");
+        return null;
     }
 
 }
