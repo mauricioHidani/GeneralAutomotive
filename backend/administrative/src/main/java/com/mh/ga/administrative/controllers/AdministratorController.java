@@ -22,7 +22,9 @@ public class AdministratorController {
 
     @GetMapping("/{id}")
     public ResponseEntity<AdministratorResponse> findById(@PathVariable String id) {
-        throw new UnsupportedOperationException();
+        return ResponseEntity.ok(
+                service.findById(id)
+        );
     }
 
     @PostMapping
