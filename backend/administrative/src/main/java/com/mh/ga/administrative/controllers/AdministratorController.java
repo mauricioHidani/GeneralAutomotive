@@ -32,7 +32,7 @@ public class AdministratorController {
         var response = service.save(request);
         var uri = ServletUriComponentsBuilder
                 .fromCurrentContextPath()
-                .path("/{id}")
+                .path("/administrators/{id}")
                 .buildAndExpand(response.id())
                 .toUri();
         return ResponseEntity.created(uri).body(response);
