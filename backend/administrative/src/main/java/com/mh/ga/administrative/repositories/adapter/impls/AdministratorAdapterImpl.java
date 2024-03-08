@@ -4,6 +4,7 @@ import com.mh.ga.administrative.models.entities.Administrator;
 import com.mh.ga.administrative.repositories.AdministratorRepository;
 import com.mh.ga.administrative.repositories.adapter.AdministratorAdapter;
 
+import java.util.Optional;
 import java.util.UUID;
 
 public class AdministratorAdapterImpl implements AdministratorAdapter<Administrator, UUID> {
@@ -16,6 +17,10 @@ public class AdministratorAdapterImpl implements AdministratorAdapter<Administra
 
     @Override public Administrator save(Administrator entity) {
         return repository.save(entity);
+    }
+
+    @Override public Optional<Administrator> findById(UUID id) {
+        return repository.findById(id);
     }
 
     @Override public Administrator findByDocument(String document) {
