@@ -18,8 +18,7 @@ import java.util.UUID;
 @Configuration
 public class AdministratorConfig {
 
-    @Bean
-    public AdministratorAdapter<Administrator, UUID> adapter(
+    @Bean public AdministratorAdapter<Administrator, UUID> adapter(
             AdministratorRepository repository) {
         return new AdministratorAdapterImpl(repository);
     }
