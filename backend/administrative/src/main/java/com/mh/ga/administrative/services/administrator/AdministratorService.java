@@ -9,18 +9,26 @@ import org.springframework.transaction.annotation.Transactional;
 public class AdministratorService {
 
     private final FindByIdAdministrator<String, AdministratorResponse> findById;
+    private final FindByDocAdministrator<String, AdministratorResponse> findByDoc;
     private final SaveAdministrator<AdministratorRequest, AdministratorResponse> save;
 
     public AdministratorService(
             FindByIdAdministrator<String, AdministratorResponse> findById,
+            FindByDocAdministrator<String, AdministratorResponse> findByDoc,
             SaveAdministrator<AdministratorRequest, AdministratorResponse> save) {
         this.findById = findById;
+        this.findByDoc = findByDoc;
         this.save = save;
     }
 
     @Transactional(readOnly = true)
     public AdministratorResponse findById(String id) {
         return findById.execute(id);
+    }
+
+    @Transactional(readOnly = true)
+    public AdministratorResponse findByDoc(String document) {
+        return findByDoc.execute(document);
     }
 
     @Transactional

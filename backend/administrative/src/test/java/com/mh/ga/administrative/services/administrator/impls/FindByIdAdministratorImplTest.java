@@ -44,7 +44,7 @@ class FindByIdAdministratorImplTest {
     }
 
     @Test
-    @DisplayName("FindByID Should Return Response Found When Was Successfully Found")
+    @DisplayName("FindByID should return response found when was successfully found")
     void findByID_shouldReturnResponseFound_whenWasSuccessfullyFound() {
         AdministratorResponse result = useCase.execute(existingID.toString());
 
