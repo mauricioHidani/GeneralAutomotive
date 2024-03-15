@@ -23,27 +23,27 @@ import java.util.UUID;
 @Configuration
 public class AdministratorConfig {
 
-    @Bean public AdministratorAdapter<Administrator, UUID> adapter(
+    @Bean public AdministratorAdapter<Administrator, UUID> administratorAdapter(
             AdministratorRepository repository) {
         return new AdministratorAdapterImpl(repository);
     }
 
-    @Bean public FindByIdAdministrator<String, AdministratorResponse> findById(
+    @Bean public FindByIdAdministrator<String, AdministratorResponse> administratorFindById(
             AdministratorAdapter<Administrator, UUID> adapter) {
         return new FindByIdAdministratorImpl(adapter);
     }
 
-    @Bean public FindByDocAdministrator<String, AdministratorResponse> findByDoc(
+    @Bean public FindByDocAdministrator<String, AdministratorResponse> administratorFindByDoc(
             AdministratorAdapter<Administrator, UUID> adapter) {
         return new FindByDocAdministratorImpl(adapter);
     }
 
-    @Bean public FindByOfficeAdministrator<String, Page<AdministratorResponse>> findByOffice(
+    @Bean public FindByOfficeAdministrator<String, Page<AdministratorResponse>> administratorFindByOffice(
             AdministratorAdapter<Administrator, UUID> adapter) {
         return new FindByOfficeAdministratorImpl(adapter);
     }
-
-    @Bean public SaveAdministrator<AdministratorRequest, AdministratorResponse> save(
+    
+    @Bean public SaveAdministrator<AdministratorRequest, AdministratorResponse> administratorSave(
             AdministratorAdapter<Administrator, UUID> adapter) {
         return new SaveAdministratorImpl(adapter);
     }

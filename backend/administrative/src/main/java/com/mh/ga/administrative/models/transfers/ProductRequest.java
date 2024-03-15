@@ -16,7 +16,7 @@ public record ProductRequest(
 ) {
     public static Product toEntity(ProductRequest request) {
         return new Product(
-                UUID.fromString(request.id()),
+                request.id != null ? UUID.fromString(request.id()) : null,
                 request.title(),
                 request.description(),
                 request.charge(),
