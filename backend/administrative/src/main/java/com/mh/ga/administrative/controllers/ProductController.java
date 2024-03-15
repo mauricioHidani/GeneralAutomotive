@@ -24,8 +24,10 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProductResponse> findById(@PathVariable UUID id) {
-        throw new UnsupportedOperationException();
+    public ResponseEntity<ProductResponse> findById(@PathVariable String id) {
+        return ResponseEntity.ok(
+                service.findById(id)
+        );
     }
 
     @PostMapping

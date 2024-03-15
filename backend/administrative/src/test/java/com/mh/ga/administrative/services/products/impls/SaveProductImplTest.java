@@ -55,7 +55,7 @@ class SaveProductImplTest {
         assertEquals(result.description(), response.description());
         assertEquals(result.charge(), response.charge());
         assertEquals(result.weight(), response.weight());
-        assertEquals(result.space(), result.space());
+        assertEquals(result.space(), response.space());
         assertEquals(result.unitCost(), response.unitCost());
     }
 

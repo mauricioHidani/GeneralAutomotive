@@ -4,6 +4,7 @@ import com.mh.ga.administrative.models.entities.Product;
 import com.mh.ga.administrative.repositories.ProductRepository;
 import com.mh.ga.administrative.repositories.adapter.ProductAdapter;
 
+import java.util.Optional;
 import java.util.UUID;
 
 public class ProductAdapterImpl implements ProductAdapter<Product, UUID> {
@@ -18,4 +19,7 @@ public class ProductAdapterImpl implements ProductAdapter<Product, UUID> {
         return repository.save(product);
     }
 
+    @Override public Optional<Product> findById(UUID id) {
+        return repository.findById(id);
+    }
 }
