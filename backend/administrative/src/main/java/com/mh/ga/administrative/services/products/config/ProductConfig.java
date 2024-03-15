@@ -6,7 +6,9 @@ import com.mh.ga.administrative.models.transfers.ProductResponse;
 import com.mh.ga.administrative.repositories.ProductRepository;
 import com.mh.ga.administrative.repositories.adapter.ProductAdapter;
 import com.mh.ga.administrative.repositories.adapter.impls.ProductAdapterImpl;
+import com.mh.ga.administrative.services.products.FindByIdProduct;
 import com.mh.ga.administrative.services.products.SaveProduct;
+import com.mh.ga.administrative.services.products.impls.FindByIdProductImpl;
 import com.mh.ga.administrative.services.products.impls.SaveProductImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,6 +21,11 @@ public class ProductConfig {
     @Bean public ProductAdapter<Product, UUID> productAdapter(
             ProductRepository repository) {
         return new ProductAdapterImpl(repository);
+    }
+
+    @Bean public FindByIdProduct<String, ProductResponse> productFindById(
+            ProductAdapter<Product, UUID> adapter) {
+        return new FindByIdProductImpl(adapter);
     }
 
     @Bean public SaveProduct<ProductRequest, ProductResponse> productSave(
