@@ -1,4 +1,4 @@
-# GENERAL AUTOMOTIVE INVENTORY MANAGER - GAIM
+# GENERAL AUTOMOTIVE
 📅 February 19, 2024 - 📍 São Paulo, Brazil<br />
 
 O Gerenciador De Estoque Automotivo (GAIM), propõem que o gerenciamento consiga levar três (3) serviços sendo: estoque, financeiro, administrativo de pedidos de entrada e saída de cargas.
