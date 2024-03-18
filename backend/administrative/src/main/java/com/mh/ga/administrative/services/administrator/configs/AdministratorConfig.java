@@ -6,14 +6,8 @@ import com.mh.ga.administrative.models.transfers.AdministratorResponse;
 import com.mh.ga.administrative.repositories.AdministratorRepository;
 import com.mh.ga.administrative.repositories.adapter.AdministratorAdapter;
 import com.mh.ga.administrative.repositories.adapter.impls.AdministratorAdapterImpl;
-import com.mh.ga.administrative.services.administrator.FindByDocAdministrator;
-import com.mh.ga.administrative.services.administrator.FindByIdAdministrator;
-import com.mh.ga.administrative.services.administrator.FindByOfficeAdministrator;
-import com.mh.ga.administrative.services.administrator.SaveAdministrator;
-import com.mh.ga.administrative.services.administrator.impls.FindByDocAdministratorImpl;
-import com.mh.ga.administrative.services.administrator.impls.FindByIdAdministratorImpl;
-import com.mh.ga.administrative.services.administrator.impls.FindByOfficeAdministratorImpl;
-import com.mh.ga.administrative.services.administrator.impls.SaveAdministratorImpl;
+import com.mh.ga.administrative.services.administrator.*;
+import com.mh.ga.administrative.services.administrator.impls.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.Page;
@@ -46,6 +40,11 @@ public class AdministratorConfig {
     @Bean public SaveAdministrator<AdministratorRequest, AdministratorResponse> administratorSave(
             AdministratorAdapter<Administrator, UUID> adapter) {
         return new SaveAdministratorImpl(adapter);
+    }
+
+    @Bean public UpdateAdministrator<String, AdministratorRequest, AdministratorResponse> update(
+            AdministratorAdapter<Administrator, UUID> adapter) {
+        return new UpdateAdministratorImpl(adapter);
     }
 
 }
