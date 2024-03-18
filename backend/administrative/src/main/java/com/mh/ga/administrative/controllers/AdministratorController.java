@@ -56,4 +56,12 @@ public class AdministratorController {
         return ResponseEntity.created(uri).body(response);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<AdministratorResponse> update(
+            @PathVariable String id, @RequestBody AdministratorRequest request) {
+        return ResponseEntity.ok(
+                service.update(id, request)
+        );
+    }
+
 }

@@ -14,16 +14,19 @@ public class AdministratorService {
     private final FindByDocAdministrator<String, AdministratorResponse> findByDoc;
     private final FindByOfficeAdministrator<String, Page<AdministratorResponse>> findByOffice;
     private final SaveAdministrator<AdministratorRequest, AdministratorResponse> save;
+    private final UpdateAdministrator<String, AdministratorRequest, AdministratorResponse> update;
 
     public AdministratorService(
             FindByIdAdministrator<String, AdministratorResponse> findById,
             FindByDocAdministrator<String, AdministratorResponse> findByDoc,
             FindByOfficeAdministrator<String, Page<AdministratorResponse>> findByOffice,
-            SaveAdministrator<AdministratorRequest, AdministratorResponse> save) {
+            SaveAdministrator<AdministratorRequest, AdministratorResponse> save,
+            UpdateAdministrator<String, AdministratorRequest, AdministratorResponse> update) {
         this.findById = findById;
         this.findByDoc = findByDoc;
         this.findByOffice = findByOffice;
         this.save = save;
+        this.update = update;
     }
 
     @Transactional(readOnly = true)
@@ -44,6 +47,11 @@ public class AdministratorService {
     @Transactional
     public AdministratorResponse save(AdministratorRequest request) {
         return save.execute(request);
+    }
+
+    @Transactional
+    public AdministratorResponse update(String id, AdministratorRequest request) {
+        return update.execute(id, request);
     }
 
 }
