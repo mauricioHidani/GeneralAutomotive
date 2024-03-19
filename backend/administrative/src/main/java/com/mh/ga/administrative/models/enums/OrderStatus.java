@@ -12,7 +12,9 @@ public enum OrderStatus {
                 return status;
             }
         }
-        throw new IllegalArgumentException("The information for type Order Status validation is not valid");
+        throw new IllegalArgumentException(
+                "The information for type Order Status validation is not valid"
+        );
     }
 
 }

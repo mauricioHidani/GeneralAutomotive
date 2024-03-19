@@ -11,4 +11,6 @@ public interface AdministratorAdapter<ENTITY, IDENTITY> {
     ENTITY findByDocument(String document);
     Page<ENTITY> findByOffice(String office, Pageable pageable);
     Page<ENTITY> findAll(Pageable pageable);
+    void delete(IDENTITY id);
+    boolean existingById(IDENTITY id);
 }

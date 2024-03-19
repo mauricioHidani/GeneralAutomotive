@@ -75,7 +75,7 @@ class SaveAdministratorImplTest {
 
     @Test
     @DisplayName("Save should throw an IllegalArgumentException when request document is invalid")
-    void saveShouldThrowAnIllegalArgumentException_whenRequestDocumentIsInvalid() {
+    void save_shouldThrowAnIllegalArgumentException_whenRequestDocumentIsInvalid() {
         var expectedErrorMessage = "Unable to proceed with the invalid administrator document";
         var request = new AdministratorRequest(
                 "123.456.789-12",
@@ -93,7 +93,7 @@ class SaveAdministratorImplTest {
 
     @Test
     @DisplayName("Save should throw a DataIntegrityException when response document is not hidden")
-    void saveShouldThrowADataIntegrityException_whenResponseDocumentIsNotHidden() {
+    void save_shouldThrowADataIntegrityException_whenResponseDocumentIsNotHidden() {
         try (MockedStatic<PersonDocumentUtil> util = mockStatic(PersonDocumentUtil.class)) {
             var document = AdministratorFactory.createRequest().document();
             var expectedErrorMessage = "Internal service error when trying to return the request response";
@@ -112,7 +112,7 @@ class SaveAdministratorImplTest {
 
     @Test
     @DisplayName("Save should throw an IllegalArgumentException when request document already exists")
-    void save_ShouldThrowAnIllegalArgumentException_whenRequestDocumentAlreadyExists() {
+    void save_shouldThrowAnIllegalArgumentException_whenRequestDocumentAlreadyExists() {
         var expectedErrorMessage = "The document provided is not valid to proceed with the request";
         when(adapter.findByDocument(any())).thenReturn(AdministratorFactory.createEntityByID(UUID.randomUUID()));
 

@@ -15,18 +15,22 @@ public class AdministratorService {
     private final FindByOfficeAdministrator<String, Page<AdministratorResponse>> findByOffice;
     private final SaveAdministrator<AdministratorRequest, AdministratorResponse> save;
     private final UpdateAdministrator<String, AdministratorRequest, AdministratorResponse> update;
+    private final DeleteAdministrator<String> delete;
 
     public AdministratorService(
             FindByIdAdministrator<String, AdministratorResponse> findById,
             FindByDocAdministrator<String, AdministratorResponse> findByDoc,
             FindByOfficeAdministrator<String, Page<AdministratorResponse>> findByOffice,
             SaveAdministrator<AdministratorRequest, AdministratorResponse> save,
-            UpdateAdministrator<String, AdministratorRequest, AdministratorResponse> update) {
+            UpdateAdministrator<String, AdministratorRequest, AdministratorResponse> update,
+            DeleteAdministrator<String> delete
+    ) {
         this.findById = findById;
         this.findByDoc = findByDoc;
         this.findByOffice = findByOffice;
         this.save = save;
         this.update = update;
+        this.delete = delete;
     }
 
     @Transactional(readOnly = true)
@@ -52,6 +56,11 @@ public class AdministratorService {
     @Transactional
     public AdministratorResponse update(String id, AdministratorRequest request) {
         return update.execute(id, request);
+    }
+
+    @Transactional
+    public void delete(String id) {
+        delete.execute(id);
     }
 
 }

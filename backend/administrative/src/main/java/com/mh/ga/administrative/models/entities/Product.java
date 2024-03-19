@@ -15,7 +15,8 @@ public class Product implements Serializable {
     @Serial
     private static final long serialVersionUID = 4221910545851338453L;
 
-    @Id @GeneratedValue(strategy = GenerationType.UUID)
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(length = 128, nullable = false)
@@ -39,7 +40,14 @@ public class Product implements Serializable {
     protected Product() {
     }
 
-    public Product(String title, String description, Double charge, Double weight, Double space, BigDecimal unitCost) {
+    public Product(
+            String title,
+            String description,
+            Double charge,
+            Double weight,
+            Double space,
+            BigDecimal unitCost
+    ) {
         this.title = title;
         this.description = description;
         this.charge = charge;
@@ -48,8 +56,15 @@ public class Product implements Serializable {
         this.unitCost = unitCost;
     }
 
-    public Product(UUID id, String title, String description, Double charge, Double weight, Double space,
-                   BigDecimal unitCost) {
+    public Product(
+            UUID id,
+            String title,
+            String description,
+            Double charge,
+            Double weight,
+            Double space,
+            BigDecimal unitCost
+    ) {
         this.id = id;
         this.title = title;
         this.description = description;

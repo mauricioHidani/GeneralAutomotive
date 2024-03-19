@@ -18,19 +18,23 @@ public class AdministratorAdapterImpl implements AdministratorAdapter<Administra
         this.repository = repository;
     }
 
-    @Override public Administrator save(Administrator entity) {
+    @Override
+    public Administrator save(Administrator entity) {
         return repository.save(entity);
     }
 
-    @Override public Optional<Administrator> findById(UUID id) {
+    @Override
+    public Optional<Administrator> findById(UUID id) {
         return repository.findById(id);
     }
 
-    @Override public Administrator findByDocument(String document) {
+    @Override
+    public Administrator findByDocument(String document) {
         return repository.findByDocument(document);
     }
 
-    @Override public Page<Administrator> findByOffice(String office, Pageable pageable) {
+    @Override
+    public Page<Administrator> findByOffice(String office, Pageable pageable) {
         return repository.findByOffice(
                 Offices.toEnum(office),
                 pageable
@@ -40,6 +44,16 @@ public class AdministratorAdapterImpl implements AdministratorAdapter<Administra
     @Override
     public Page<Administrator> findAll(Pageable pageable) {
         return repository.findAll(pageable);
+    }
+
+    @Override
+    public void delete(UUID id) {
+        repository.deleteById(id);
+    }
+
+    @Override
+    public boolean existingById(UUID id) {
+        return repository.existsById(id);
     }
 
 }

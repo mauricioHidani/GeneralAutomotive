@@ -18,18 +18,24 @@ import java.util.UUID;
 @Configuration
 public class ProductConfig {
 
-    @Bean public ProductAdapter<Product, UUID> productAdapter(
-            ProductRepository repository) {
+    @Bean
+    public ProductAdapter<Product, UUID> productAdapter(
+            ProductRepository repository
+    ) {
         return new ProductAdapterImpl(repository);
     }
 
-    @Bean public FindByIdProduct<String, ProductResponse> productFindById(
-            ProductAdapter<Product, UUID> adapter) {
+    @Bean
+    public FindByIdProduct<String, ProductResponse> productFindById(
+            ProductAdapter<Product, UUID> adapter
+    ) {
         return new FindByIdProductImpl(adapter);
     }
 
-    @Bean public SaveProduct<ProductRequest, ProductResponse> productSave(
-            ProductAdapter<Product, UUID> adapter) {
+    @Bean
+    public SaveProduct<ProductRequest, ProductResponse> productSave(
+            ProductAdapter<Product, UUID> adapter
+    ) {
         return new SaveProductImpl(adapter);
     }
 
