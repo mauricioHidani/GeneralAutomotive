@@ -15,7 +15,8 @@ public class ProductService {
 
     public ProductService(
             SaveProduct<ProductRequest, ProductResponse> save,
-            FindByIdProduct<String, ProductResponse> findById) {
+            FindByIdProduct<String, ProductResponse> findById
+    ) {
         this.save = save;
         this.findById = findById;
     }

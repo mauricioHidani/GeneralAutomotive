@@ -24,14 +24,17 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProductResponse> findById(@PathVariable String id) {
+    public ResponseEntity<ProductResponse> findById(
+            @PathVariable String id
+    ) {
         return ResponseEntity.ok(
                 service.findById(id)
         );
     }
 
     @PostMapping
-    public ResponseEntity<ProductResponse> save(@RequestBody ProductRequest product) {
+    public ResponseEntity<ProductResponse> save(
+            @RequestBody ProductRequest product) {
         ProductResponse response = service.save(product);
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequestUri()

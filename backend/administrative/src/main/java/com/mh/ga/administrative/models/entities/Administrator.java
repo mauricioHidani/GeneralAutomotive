@@ -15,7 +15,8 @@ public class Administrator implements Serializable {
     @Serial
     private static final long serialVersionUID = 1787179138672080591L;
 
-    @Id @GeneratedValue(strategy = GenerationType.UUID)
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
     @Column(nullable = false, unique = true)
@@ -30,13 +31,22 @@ public class Administrator implements Serializable {
     protected Administrator() {
     }
 
-    public Administrator(String document, String fullName, Offices office) {
+    public Administrator(
+            String document,
+            String fullName,
+            Offices office
+    ) {
         this.document = document;
         this.fullName = fullName;
         this.office = office;
     }
 
-    public Administrator(UUID id, String document, String fullName, Offices office) {
+    public Administrator(
+            UUID id,
+            String document,
+            String fullName,
+            Offices office
+    ) {
         this.id = id;
         this.document = document;
         this.fullName = fullName;

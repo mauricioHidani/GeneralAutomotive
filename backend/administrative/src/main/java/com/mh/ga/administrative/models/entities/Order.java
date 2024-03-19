@@ -18,7 +18,8 @@ public class Order implements Serializable {
     @Serial
     private static final long serialVersionUID = -6000799533832033236L;
 
-    @Id @GeneratedValue(strategy = GenerationType.UUID)
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private final UUID id;
 
     @Enumerated(EnumType.STRING)
@@ -50,7 +51,12 @@ public class Order implements Serializable {
         this.liable = null;
     }
 
-    public Order(OrderStatus status, String description, Instant registered, Administrator liable) {
+    public Order(
+            OrderStatus status,
+            String description,
+            Instant registered,
+            Administrator liable
+    ) {
         this.id = null;
         this.status = status;
         this.description = description;
@@ -58,7 +64,13 @@ public class Order implements Serializable {
         this.liable = liable;
     }
 
-    public Order(UUID id, OrderStatus status, String description, Instant registered, Administrator liable) {
+    public Order(
+            UUID id,
+            OrderStatus status,
+            String description,
+            Instant registered,
+            Administrator liable
+    ) {
         this.id = id;
         this.status = status;
         this.description = description;

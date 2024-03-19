@@ -22,6 +22,8 @@ public class AdministratorService {
             FindByOfficeAdministrator<String, Page<AdministratorResponse>> findByOffice,
             SaveAdministrator<AdministratorRequest, AdministratorResponse> save,
             UpdateAdministrator<String, AdministratorRequest, AdministratorResponse> update) {
+            UpdateAdministrator<String, AdministratorRequest, AdministratorResponse> update,
+    ) {
         this.findById = findById;
         this.findByDoc = findByDoc;
         this.findByOffice = findByOffice;

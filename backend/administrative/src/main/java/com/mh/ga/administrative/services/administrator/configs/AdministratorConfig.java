@@ -17,32 +17,38 @@ import java.util.UUID;
 @Configuration
 public class AdministratorConfig {
 
-    @Bean public AdministratorAdapter<Administrator, UUID> administratorAdapter(
+    @Bean
+    public AdministratorAdapter<Administrator, UUID> administratorAdapter(
             AdministratorRepository repository) {
         return new AdministratorAdapterImpl(repository);
     }
 
-    @Bean public FindByIdAdministrator<String, AdministratorResponse> administratorFindById(
+    @Bean
+    public FindByIdAdministrator<String, AdministratorResponse> administratorFindById(
             AdministratorAdapter<Administrator, UUID> adapter) {
         return new FindByIdAdministratorImpl(adapter);
     }
 
-    @Bean public FindByDocAdministrator<String, AdministratorResponse> administratorFindByDoc(
+    @Bean
+    public FindByDocAdministrator<String, AdministratorResponse> administratorFindByDoc(
             AdministratorAdapter<Administrator, UUID> adapter) {
         return new FindByDocAdministratorImpl(adapter);
     }
 
-    @Bean public FindByOfficeAdministrator<String, Page<AdministratorResponse>> administratorFindByOffice(
+    @Bean
+    public FindByOfficeAdministrator<String, Page<AdministratorResponse>> administratorFindByOffice(
             AdministratorAdapter<Administrator, UUID> adapter) {
         return new FindByOfficeAdministratorImpl(adapter);
     }
     
-    @Bean public SaveAdministrator<AdministratorRequest, AdministratorResponse> administratorSave(
+    @Bean
+    public SaveAdministrator<AdministratorRequest, AdministratorResponse> administratorSave(
             AdministratorAdapter<Administrator, UUID> adapter) {
         return new SaveAdministratorImpl(adapter);
     }
 
-    @Bean public UpdateAdministrator<String, AdministratorRequest, AdministratorResponse> update(
+    @Bean
+    public UpdateAdministrator<String, AdministratorRequest, AdministratorResponse> administratorUpdate(
             AdministratorAdapter<Administrator, UUID> adapter) {
         return new UpdateAdministratorImpl(adapter);
     }
