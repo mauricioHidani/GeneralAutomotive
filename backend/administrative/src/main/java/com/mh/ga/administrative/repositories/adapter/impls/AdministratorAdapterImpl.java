@@ -46,4 +46,14 @@ public class AdministratorAdapterImpl implements AdministratorAdapter<Administra
         return repository.findAll(pageable);
     }
 
+    @Override
+    public void delete(UUID id) {
+        repository.deleteById(id);
+    }
+
+    @Override
+    public boolean existingById(UUID id) {
+        return repository.existsById(id);
+    }
+
 }
