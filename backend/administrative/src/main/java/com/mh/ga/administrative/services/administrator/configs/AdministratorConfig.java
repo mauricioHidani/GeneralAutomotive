@@ -53,4 +53,10 @@ public class AdministratorConfig {
         return new UpdateAdministratorImpl(adapter);
     }
 
+    @Bean
+    public DeleteAdministrator<String> administratorDelete(
+            AdministratorAdapter<Administrator, UUID> adapter) {
+        return new DeleteAdministratorImpl(adapter);
+    }
+
 }
