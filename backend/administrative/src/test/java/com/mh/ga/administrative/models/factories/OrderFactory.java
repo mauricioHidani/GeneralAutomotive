@@ -1,12 +1,10 @@
 package com.mh.ga.administrative.models.factories;
 
-import com.mh.ga.administrative.models.entities.Administrator;
 import com.mh.ga.administrative.models.entities.Order;
 import com.mh.ga.administrative.models.enums.OrderStatus;
 import com.mh.ga.administrative.models.transfers.*;
 
 import java.time.Instant;
-import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -18,13 +16,9 @@ public class OrderFactory {
                 OrderStatus.APPROVED,
                 "Uma ordem de recebimento de estoque",
                 Instant.parse("2024-01-15T18:35:24.00Z"),
-                AdministratorFactory.createEntityByID(
-                        UUID.fromString("1b813689-6fad-463c-b3c7-93b2f3e06f32")
-                )
+                AdministratorFactory.createEntityByID(UUID.fromString("1b813689-6fad-463c-b3c7-93b2f3e06f32"))
         );
-        order.addProduct(ProductFactory.createEntityWithID(
-                UUID.fromString("cf77d3b3-fa9d-42c9-95e4-756e7aeb4ef6")
-        ));
+        order.addProduct(ProductFactory.createEntityWithID(UUID.fromString("cf77d3b3-fa9d-42c9-95e4-756e7aeb4ef6")));
 
         return order;
     }
@@ -34,14 +28,9 @@ public class OrderFactory {
                 OrderStatus.APPROVED,
                 "Uma ordem de recebimento de estoque",
                 Instant.parse("2024-01-15T18:35:24.00Z"),
-                AdministratorFactory.createEntityByID(
-                        UUID.fromString("1b813689-6fad-463c-b3c7-93b2f3e06f32")
-                )
+                AdministratorFactory.createEntityByID(UUID.fromString("1b813689-6fad-463c-b3c7-93b2f3e06f32"))
         );
-        order.addProduct(
-                ProductFactory.createEntityWithID(
-                        UUID.fromString("cf77d3b3-fa9d-42c9-95e4-756e7aeb4ef6")
-                )
+        order.addProduct(ProductFactory.createEntityWithID(UUID.fromString("cf77d3b3-fa9d-42c9-95e4-756e7aeb4ef6"))
         );
 
         return order;
@@ -53,18 +42,8 @@ public class OrderFactory {
                 OrderStatus.APPROVED.toString(),
                 "Uma ordem de recebimento de estoque",
                 Instant.parse("2024-01-15T18:35:24.00Z"),
-                new AdministratorIdentityRequest(
-                        UUID.fromString("1b813689-6fad-463c-b3c7-93b2f3e06f32")
-                ),
-                Set.of(new ProductRequest(
-                        "cf77d3b3-fa9d-42c9-95e4-756e7aeb4ef6",
-                        null,
-                        null,
-                        null,
-                        null,
-                        null,
-                        null
-                ))
+                new AdministratorIdentityRequest(UUID.fromString("1b813689-6fad-463c-b3c7-93b2f3e06f32")),
+                Set.of(new ProductIdentityRequest(UUID.fromString("cf77d3b3-fa9d-42c9-95e4-756e7aeb4ef6")))
         );
     }
 
@@ -74,12 +53,8 @@ public class OrderFactory {
                 OrderStatus.APPROVED.toString(),
                 "Uma ordem de recebimento de estoque",
                 Instant.parse("2024-01-15T18:35:24.00Z"),
-                AdministratorFactory.createResponseByID(
-                        UUID.fromString("1b813689-6fad-463c-b3c7-93b2f3e06f32")
-                ),
-                Set.of(ProductFactory.createResponseWithID(
-                        UUID.fromString("cf77d3b3-fa9d-42c9-95e4-756e7aeb4ef6")
-                ))
+                new AdministratorIdentityResponse(UUID.fromString("1b813689-6fad-463c-b3c7-93b2f3e06f32")),
+                Set.of(new ProductIdentityResponse(UUID.fromString("cf77d3b3-fa9d-42c9-95e4-756e7aeb4ef6")))
         );
     }
 
@@ -89,12 +64,8 @@ public class OrderFactory {
                 OrderStatus.APPROVED.toString(),
                 "Uma ordem de recebimento de estoque",
                 Instant.parse("2024-01-15T18:35:24.00Z"),
-                AdministratorFactory.createResponseByID(
-                        UUID.fromString("1b813689-6fad-463c-b3c7-93b2f3e06f32")
-                ),
-                Set.of(ProductFactory.createResponseWithID(
-                        UUID.fromString("cf77d3b3-fa9d-42c9-95e4-756e7aeb4ef6")
-                ))
+                new AdministratorIdentityResponse(UUID.fromString("1b813689-6fad-463c-b3c7-93b2f3e06f32")),
+                Set.of(new ProductIdentityResponse(UUID.fromString("cf77d3b3-fa9d-42c9-95e4-756e7aeb4ef6")))
         );
     }
 
