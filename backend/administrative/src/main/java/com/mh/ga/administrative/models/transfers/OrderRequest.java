@@ -15,7 +15,7 @@ public record OrderRequest(
     String description,
     Instant registered,
     AdministratorIdentityRequest liable,
-    Set<ProductRequest> inventory
+    Set<ProductIdentityRequest> inventory
 ) {
 
     public static Order toEntity(OrderRequest request) {
@@ -29,7 +29,7 @@ public record OrderRequest(
 
         order.getInventory().addAll(
                 request.inventory().stream()
-                        .map(ProductRequest::toEntity)
+                        .map(ProductIdentityRequest::toEntity)
                         .collect(Collectors.toSet())
         );
 
@@ -44,7 +44,7 @@ public record OrderRequest(
                 entity.getRegistered(),
                 new AdministratorIdentityRequest(entity.getId()),
                 entity.getInventory().stream()
-                        .map(ProductRequest::toRequest)
+                        .map(ProductIdentityRequest::toRequest)
                         .collect(Collectors.toSet())
         );
     }
@@ -55,11 +55,9 @@ public record OrderRequest(
                 response.status(),
                 response.description(),
                 response.registered(),
-                new AdministratorIdentityRequest(
-                        UUID.fromString(response.liable().id())
-                ),
+                AdministratorIdentityRequest.toRequest(response.liable()),
                 response.inventory().stream()
-                        .map(ProductRequest::toRequest)
+                        .map(ProductIdentityRequest::toRequest)
                         .collect(Collectors.toSet())
         );
     }

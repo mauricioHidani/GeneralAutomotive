@@ -13,8 +13,8 @@ public record OrderResponse(
     String status,
     String description,
     Instant registered,
-    AdministratorResponse liable,
-    Set<ProductResponse> inventory
+    AdministratorIdentityResponse liable,
+    Set<ProductIdentityResponse> inventory
 ) {
 
     public static Order toEntity(OrderResponse response) {
@@ -23,12 +23,12 @@ public record OrderResponse(
                 OrderStatus.toEnum(response.status()),
                 response.description(),
                 response.registered(),
-                AdministratorResponse.toEntity(response.liable())
+                AdministratorIdentityResponse.toEntity(response.liable())
         );
 
         order.getInventory().addAll(
                 response.inventory().stream()
-                        .map(ProductResponse::toEntity)
+                        .map(ProductIdentityResponse::toEntity)
                         .collect(Collectors.toSet())
         );
 
@@ -41,14 +41,14 @@ public record OrderResponse(
                 entity.getStatus().toString(),
                 entity.getDescription(),
                 entity.getRegistered(),
-                AdministratorResponse.toResponse(entity.getLiable()),
+                AdministratorIdentityResponse.toResponse(entity.getLiable()),
                 entity.getInventory().stream()
-                        .map(ProductResponse::toResponse)
+                        .map(ProductIdentityResponse::toResponse)
                         .collect(Collectors.toSet())
         );
     }
 
-    public static OrderResponse toResponse(OrderRequest request, AdministratorResponse administrator) {
+    public static OrderResponse toResponse(OrderRequest request, AdministratorIdentityResponse administrator) {
         return new OrderResponse(
                 request.id(),
                 request.status(),
@@ -56,7 +56,7 @@ public record OrderResponse(
                 request.registered(),
                 administrator,
                 request.inventory().stream()
-                        .map(ProductResponse::toResponse)
+                        .map(ProductIdentityResponse::toResponse)
                         .collect(Collectors.toSet())
         );
     }
