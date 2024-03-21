@@ -20,7 +20,7 @@ public record OrderRequest(
 
     public static Order toEntity(OrderRequest request) {
         Order order = new Order(
-                UUID.fromString(request.id()),
+                request.id() != null ? UUID.fromString(request.id()) : null,
                 OrderStatus.toEnum(request.status()),
                 request.description(),
                 request.registered(),
