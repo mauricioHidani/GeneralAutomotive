@@ -11,8 +11,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import javax.swing.*;
-
 import java.util.Optional;
 import java.util.UUID;
 
@@ -38,7 +36,7 @@ class FindByIdAdministratorImplTest {
         nonExistingID = UUID.randomUUID();
 
         entity = AdministratorFactory.createEntityByID(existingID);
-        response = AdministratorFactory.createResponseByID(existingID.toString());
+        response = AdministratorFactory.createResponseByID(existingID);
 
         when(adapter.findById(existingID)).thenReturn(Optional.of(entity));
     }

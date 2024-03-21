@@ -15,13 +15,9 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
 
-import static net.bytebuddy.matcher.ElementMatchers.is;
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
@@ -47,7 +43,7 @@ class FindByOfficeAdministratorImplTest {
         pageable = PageRequest.of(0, 12);
 
         entity = AdministratorFactory.createEntityByID(id);
-        response = AdministratorFactory.createResponseByID(id.toString());
+        response = AdministratorFactory.createResponseByID(id);
 
         existingOffice = entity.getOffice().toString();
         nonExistingOffice = "non_existing_office";

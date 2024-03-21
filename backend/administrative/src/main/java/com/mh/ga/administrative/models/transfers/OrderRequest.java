@@ -1,5 +1,6 @@
 package com.mh.ga.administrative.models.transfers;
 
+import com.mh.ga.administrative.models.entities.Administrator;
 import com.mh.ga.administrative.models.entities.Order;
 import com.mh.ga.administrative.models.enums.OrderStatus;
 
@@ -13,7 +14,7 @@ public record OrderRequest(
     String status,
     String description,
     Instant registered,
-    AdministratorRequest liable,
+    AdministratorIdentityRequest liable,
     Set<ProductRequest> inventory
 ) {
 
@@ -23,7 +24,7 @@ public record OrderRequest(
                 OrderStatus.toEnum(request.status()),
                 request.description(),
                 request.registered(),
-                AdministratorRequest.toEntity(request.liable())
+                new Administrator(request.liable().id(), null, null, null)
         );
 
         order.getInventory().addAll(
@@ -41,7 +42,7 @@ public record OrderRequest(
                 entity.getStatus().toString(),
                 entity.getDescription(),
                 entity.getRegistered(),
-                AdministratorRequest.toRequest(entity.getLiable()),
+                new AdministratorIdentityRequest(entity.getId()),
                 entity.getInventory().stream()
                         .map(ProductRequest::toRequest)
                         .collect(Collectors.toSet())
@@ -54,7 +55,9 @@ public record OrderRequest(
                 response.status(),
                 response.description(),
                 response.registered(),
-                AdministratorRequest.toRequest(response.liable()),
+                new AdministratorIdentityRequest(
+                        UUID.fromString(response.liable().id())
+                ),
                 response.inventory().stream()
                         .map(ProductRequest::toRequest)
                         .collect(Collectors.toSet())
