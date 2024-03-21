@@ -18,9 +18,13 @@ public class OrderFactory {
                 OrderStatus.APPROVED,
                 "Uma ordem de recebimento de estoque",
                 Instant.parse("2024-01-15T18:35:24.00Z"),
-                AdministratorFactory.createEntityByID(UUID.randomUUID())
+                AdministratorFactory.createEntityByID(
+                        UUID.fromString("1b813689-6fad-463c-b3c7-93b2f3e06f32")
+                )
         );
-        order.addProduct(ProductFactory.createEntityWithID(UUID.randomUUID()));
+        order.addProduct(ProductFactory.createEntityWithID(
+                UUID.fromString("cf77d3b3-fa9d-42c9-95e4-756e7aeb4ef6")
+        ));
 
         return order;
     }
@@ -30,9 +34,15 @@ public class OrderFactory {
                 OrderStatus.APPROVED,
                 "Uma ordem de recebimento de estoque",
                 Instant.parse("2024-01-15T18:35:24.00Z"),
-                AdministratorFactory.createEntityByID(UUID.randomUUID())
+                AdministratorFactory.createEntityByID(
+                        UUID.fromString("1b813689-6fad-463c-b3c7-93b2f3e06f32")
+                )
         );
-        order.addProduct(ProductFactory.createEntityWithID(UUID.randomUUID()));
+        order.addProduct(
+                ProductFactory.createEntityWithID(
+                        UUID.fromString("cf77d3b3-fa9d-42c9-95e4-756e7aeb4ef6")
+                )
+        );
 
         return order;
     }
@@ -43,9 +53,11 @@ public class OrderFactory {
                 OrderStatus.APPROVED.toString(),
                 "Uma ordem de recebimento de estoque",
                 Instant.parse("2024-01-15T18:35:24.00Z"),
-                new AdministratorIdentityRequest(UUID.randomUUID()),
+                new AdministratorIdentityRequest(
+                        UUID.fromString("1b813689-6fad-463c-b3c7-93b2f3e06f32")
+                ),
                 Set.of(new ProductRequest(
-                        UUID.randomUUID().toString(),
+                        "cf77d3b3-fa9d-42c9-95e4-756e7aeb4ef6",
                         null,
                         null,
                         null,
@@ -62,8 +74,12 @@ public class OrderFactory {
                 OrderStatus.APPROVED.toString(),
                 "Uma ordem de recebimento de estoque",
                 Instant.parse("2024-01-15T18:35:24.00Z"),
-                AdministratorFactory.createResponseByID(UUID.randomUUID()),
-                Set.of(ProductFactory.createResponseWithID(UUID.randomUUID()))
+                AdministratorFactory.createResponseByID(
+                        UUID.fromString("1b813689-6fad-463c-b3c7-93b2f3e06f32")
+                ),
+                Set.of(ProductFactory.createResponseWithID(
+                        UUID.fromString("cf77d3b3-fa9d-42c9-95e4-756e7aeb4ef6")
+                ))
         );
     }
 
@@ -73,8 +89,12 @@ public class OrderFactory {
                 OrderStatus.APPROVED.toString(),
                 "Uma ordem de recebimento de estoque",
                 Instant.parse("2024-01-15T18:35:24.00Z"),
-                AdministratorFactory.createResponseByID(UUID.randomUUID()),
-                Set.of(ProductFactory.createResponseWithID(UUID.randomUUID()))
+                AdministratorFactory.createResponseByID(
+                        UUID.fromString("1b813689-6fad-463c-b3c7-93b2f3e06f32")
+                ),
+                Set.of(ProductFactory.createResponseWithID(
+                        UUID.fromString("cf77d3b3-fa9d-42c9-95e4-756e7aeb4ef6")
+                ))
         );
     }
 
