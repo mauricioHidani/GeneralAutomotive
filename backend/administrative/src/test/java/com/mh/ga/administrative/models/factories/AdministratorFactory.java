@@ -80,9 +80,9 @@ public class AdministratorFactory {
         );
     }
 
-    public static AdministratorResponse createResponseByID(String id) {
+    public static AdministratorResponse createResponseByID(UUID id) {
         return new AdministratorResponse(
-                id,
+                id.toString(),
                 "***.456.789-**",
                 "Nathalia Santos",
                 Offices.BUYING_COORDINATOR.toString()

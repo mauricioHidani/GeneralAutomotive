@@ -40,7 +40,7 @@ class FindByDocAdministratorImplTest {
         invalidDoc = "123.456.789.90";
 
         entity = AdministratorFactory.createEntityByID(id);
-        response = AdministratorFactory.createResponseByID(id.toString());
+        response = AdministratorFactory.createResponseByID(id);
 
         when(adapter.findByDocument(existingDoc)).thenReturn(entity);
         when(adapter.findByDocument(nonExistingDoc)).thenReturn(null);

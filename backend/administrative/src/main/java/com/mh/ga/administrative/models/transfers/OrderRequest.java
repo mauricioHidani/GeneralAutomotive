@@ -1,5 +1,6 @@
 package com.mh.ga.administrative.models.transfers;
 
+import com.mh.ga.administrative.models.entities.Administrator;
 import com.mh.ga.administrative.models.entities.Order;
 import com.mh.ga.administrative.models.enums.OrderStatus;
 
@@ -13,22 +14,22 @@ public record OrderRequest(
     String status,
     String description,
     Instant registered,
-    AdministratorRequest liable,
-    Set<ProductRequest> inventory
+    AdministratorIdentityRequest liable,
+    Set<ProductIdentityRequest> inventory
 ) {
 
     public static Order toEntity(OrderRequest request) {
         Order order = new Order(
-                UUID.fromString(request.id()),
+                request.id() != null ? UUID.fromString(request.id()) : null,
                 OrderStatus.toEnum(request.status()),
                 request.description(),
                 request.registered(),
-                AdministratorRequest.toEntity(request.liable())
+                new Administrator(request.liable().id(), null, null, null)
         );
 
         order.getInventory().addAll(
                 request.inventory().stream()
-                        .map(ProductRequest::toEntity)
+                        .map(ProductIdentityRequest::toEntity)
                         .collect(Collectors.toSet())
         );
 
@@ -41,9 +42,9 @@ public record OrderRequest(
                 entity.getStatus().toString(),
                 entity.getDescription(),
                 entity.getRegistered(),
-                AdministratorRequest.toRequest(entity.getLiable()),
+                new AdministratorIdentityRequest(entity.getId()),
                 entity.getInventory().stream()
-                        .map(ProductRequest::toRequest)
+                        .map(ProductIdentityRequest::toRequest)
                         .collect(Collectors.toSet())
         );
     }
@@ -54,9 +55,9 @@ public record OrderRequest(
                 response.status(),
                 response.description(),
                 response.registered(),
-                AdministratorRequest.toRequest(response.liable()),
+                AdministratorIdentityRequest.toRequest(response.liable()),
                 response.inventory().stream()
-                        .map(ProductRequest::toRequest)
+                        .map(ProductIdentityRequest::toRequest)
                         .collect(Collectors.toSet())
         );
     }
