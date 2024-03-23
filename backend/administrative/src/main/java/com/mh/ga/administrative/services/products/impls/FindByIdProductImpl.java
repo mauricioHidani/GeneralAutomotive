@@ -1,8 +1,6 @@
 package com.mh.ga.administrative.services.products.impls;
 
-import com.mh.ga.administrative.models.entities.Administrator;
 import com.mh.ga.administrative.models.entities.Product;
-import com.mh.ga.administrative.models.transfers.AdministratorResponse;
 import com.mh.ga.administrative.models.transfers.ProductResponse;
 import com.mh.ga.administrative.repositories.adapter.ProductAdapter;
 import com.mh.ga.administrative.services.exceptions.ResourceNotFoundException;
