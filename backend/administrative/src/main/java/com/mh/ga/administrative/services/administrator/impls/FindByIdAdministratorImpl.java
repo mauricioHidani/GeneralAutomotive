@@ -16,7 +16,8 @@ public class FindByIdAdministratorImpl implements FindByIdAdministrator<String, 
         this.adapter = adapter;
     }
 
-    @Override public AdministratorResponse execute(String id) {
+    @Override
+    public AdministratorResponse execute(String id) {
         if (id == null) {
             throw new IllegalArgumentException(
                     "Operation not valid on the requested system"

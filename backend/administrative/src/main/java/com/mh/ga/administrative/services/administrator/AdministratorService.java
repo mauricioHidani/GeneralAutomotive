@@ -17,14 +17,12 @@ public class AdministratorService {
     private final UpdateAdministrator<String, AdministratorRequest, AdministratorResponse> update;
     private final DeleteAdministrator<String> delete;
 
-    public AdministratorService(
-            FindByIdAdministrator<String, AdministratorResponse> findById,
-            FindByDocAdministrator<String, AdministratorResponse> findByDoc,
-            FindByOfficeAdministrator<String, Page<AdministratorResponse>> findByOffice,
-            SaveAdministrator<AdministratorRequest, AdministratorResponse> save,
-            UpdateAdministrator<String, AdministratorRequest, AdministratorResponse> update,
-            DeleteAdministrator<String> delete
-    ) {
+    public AdministratorService(FindByIdAdministrator<String, AdministratorResponse> findById,
+                                FindByDocAdministrator<String, AdministratorResponse> findByDoc,
+                                FindByOfficeAdministrator<String, Page<AdministratorResponse>> findByOffice,
+                                SaveAdministrator<AdministratorRequest, AdministratorResponse> save,
+                                UpdateAdministrator<String, AdministratorRequest, AdministratorResponse> update,
+                                DeleteAdministrator<String> delete) {
         this.findById = findById;
         this.findByDoc = findByDoc;
         this.findByOffice = findByOffice;

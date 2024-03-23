@@ -24,9 +24,7 @@ public class AdministratorController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<AdministratorResponse> findById(
-            @PathVariable String id
-    ) {
+    public ResponseEntity<AdministratorResponse> findById(@PathVariable String id) {
         return ResponseEntity.ok(
                 service.findById(id)
         );
@@ -36,28 +34,22 @@ public class AdministratorController {
             value = "/doc",
             consumes = MediaType.TEXT_PLAIN_VALUE
     )
-    public ResponseEntity<AdministratorResponse> findByDoc(
-            @RequestBody String document
-    ) {
+    public ResponseEntity<AdministratorResponse> findByDoc(@RequestBody String document) {
         return ResponseEntity.ok(
                 service.findByDoc(document)
         );
     }
 
     @GetMapping("/office")
-    public ResponseEntity<Page<AdministratorResponse>> findByOffice(
-            @RequestParam(defaultValue = "") String officeName,
-            Pageable pageable
-    ) {
+    public ResponseEntity<Page<AdministratorResponse>> findByOffice(@RequestParam(defaultValue = "") String officeName,
+                                                                    Pageable pageable) {
         return ResponseEntity.ok(
                 service.findByOffice(officeName, pageable)
         );
     }
 
     @PostMapping
-    public ResponseEntity<AdministratorResponse> save(
-            @RequestBody AdministratorRequest request
-    ) {
+    public ResponseEntity<AdministratorResponse> save(@RequestBody AdministratorRequest request) {
         var response = service.save(request);
         var uri = ServletUriComponentsBuilder
                 .fromCurrentContextPath()
@@ -68,19 +60,15 @@ public class AdministratorController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<AdministratorResponse> update(
-            @PathVariable String id,
-            @RequestBody AdministratorRequest request
-    ) {
+    public ResponseEntity<AdministratorResponse> update(@PathVariable String id,
+                                                        @RequestBody AdministratorRequest request) {
         return ResponseEntity.ok(
                 service.update(id, request)
         );
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> delete(
-            @PathVariable String id
-    ) {
+    public ResponseEntity<Void> delete(@PathVariable String id) {
         service.delete(id);
         return ResponseEntity.noContent().build();
     }

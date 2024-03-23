@@ -31,22 +31,18 @@ public class Administrator implements Serializable {
     protected Administrator() {
     }
 
-    public Administrator(
-            String document,
-            String fullName,
-            Offices office
-    ) {
+    public Administrator(String document,
+                         String fullName,
+                         Offices office) {
         this.document = document;
         this.fullName = fullName;
         this.office = office;
     }
 
-    public Administrator(
-            UUID id,
-            String document,
-            String fullName,
-            Offices office
-    ) {
+    public Administrator(UUID id,
+                         String document,
+                         String fullName,
+                         Offices office) {
         this.id = id;
         this.document = document;
         this.fullName = fullName;

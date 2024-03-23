@@ -17,7 +17,8 @@ public class FindByDocAdministratorImpl implements FindByDocAdministrator<String
         this.adapter = adapter;
     }
 
-    @Override public AdministratorResponse execute(String document) {
+    @Override
+    public AdministratorResponse execute(String document) {
         if (document == null) {
             throw new IllegalArgumentException(
                     "Operation not valid on the requested system"

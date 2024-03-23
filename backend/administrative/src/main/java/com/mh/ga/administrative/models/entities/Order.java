@@ -40,7 +40,8 @@ public class Order implements Serializable {
     @JoinTable(
             name = "inventory",
             joinColumns = @JoinColumn(name = "order_id"),
-            inverseJoinColumns = @JoinColumn(name = "product_id"))
+            inverseJoinColumns = @JoinColumn(name = "product_id")
+    )
     private final Set<Product> inventory = new HashSet<>();
 
     protected Order() {
@@ -51,11 +52,10 @@ public class Order implements Serializable {
         this.liable = null;
     }
 
-    public Order(
-            OrderStatus status,
-            String description,
-            Instant registered,
-            Administrator liable
+    public Order(OrderStatus status,
+                 String description,
+                 Instant registered,
+                 Administrator liable
     ) {
         this.id = null;
         this.status = status;

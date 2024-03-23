@@ -19,23 +19,17 @@ import java.util.UUID;
 public class OrderConfig {
 
     @Bean
-    public OrderAdapter<Order, UUID> orderAdapter(
-            OrderRepository repository
-    ) {
+    public OrderAdapter<Order, UUID> orderAdapter(OrderRepository repository) {
         return new OrderAdapterImpl(repository);
     }
 
     @Bean
-    public FindByIdOrder<UUID, OrderResponse> orderFindById(
-            OrderAdapter<Order, UUID> adapter
-    ) {
+    public FindByIdOrder<UUID, OrderResponse> orderFindById(OrderAdapter<Order, UUID> adapter) {
         return new FindByIdOrderImpl(adapter);
     }
 
     @Bean
-    public SaveOrder<OrderRequest, OrderResponse> orderSave(
-            OrderAdapter<Order, UUID> adapter
-    ) {
+    public SaveOrder<OrderRequest, OrderResponse> orderSave(OrderAdapter<Order, UUID> adapter) {
         return new SaveOrderImpl(adapter);
     }
 

@@ -15,7 +15,8 @@ public class DeleteAdministratorImpl implements DeleteAdministrator<String> {
         this.adapter = adapter;
     }
 
-    @Override public void execute(String id) {
+    @Override
+    public void execute(String id) {
         UUID validId;
 
         if (id == null) {

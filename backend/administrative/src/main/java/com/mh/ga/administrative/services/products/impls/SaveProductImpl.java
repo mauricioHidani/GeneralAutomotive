@@ -17,7 +17,8 @@ public class SaveProductImpl implements SaveProduct<ProductRequest, ProductRespo
         this.adapter = adapter;
     }
 
-    @Override public ProductResponse execute(ProductRequest product) {
+    @Override
+    public ProductResponse execute(ProductRequest product) {
         if (product == null) {
             throw new IllegalArgumentException(
                     "Unable to proceed with the request"
