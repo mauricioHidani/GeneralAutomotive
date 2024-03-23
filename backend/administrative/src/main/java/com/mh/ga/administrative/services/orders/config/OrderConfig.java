@@ -6,8 +6,10 @@ import com.mh.ga.administrative.models.transfers.OrderResponse;
 import com.mh.ga.administrative.repositories.OrderRepository;
 import com.mh.ga.administrative.repositories.adapter.OrderAdapter;
 import com.mh.ga.administrative.repositories.adapter.impls.OrderAdapterImpl;
+import com.mh.ga.administrative.services.orders.DeleteOrder;
 import com.mh.ga.administrative.services.orders.FindByIdOrder;
 import com.mh.ga.administrative.services.orders.SaveOrder;
+import com.mh.ga.administrative.services.orders.impls.DeleteOrderImpl;
 import com.mh.ga.administrative.services.orders.impls.FindByIdOrderImpl;
 import com.mh.ga.administrative.services.orders.impls.SaveOrderImpl;
 import org.springframework.context.annotation.Bean;
@@ -19,24 +21,23 @@ import java.util.UUID;
 public class OrderConfig {
 
     @Bean
-    public OrderAdapter<Order, UUID> orderAdapter(
-            OrderRepository repository
-    ) {
+    public OrderAdapter<Order, UUID> orderAdapter(OrderRepository repository) {
         return new OrderAdapterImpl(repository);
     }
 
     @Bean
-    public FindByIdOrder<UUID, OrderResponse> orderFindById(
-            OrderAdapter<Order, UUID> adapter
-    ) {
+    public FindByIdOrder<String, OrderResponse> orderFindById(OrderAdapter<Order, UUID> adapter) {
         return new FindByIdOrderImpl(adapter);
     }
 
     @Bean
-    public SaveOrder<OrderRequest, OrderResponse> orderSave(
-            OrderAdapter<Order, UUID> adapter
-    ) {
+    public SaveOrder<OrderRequest, OrderResponse> orderSave(OrderAdapter<Order, UUID> adapter) {
         return new SaveOrderImpl(adapter);
+    }
+
+    @Bean
+    public DeleteOrder<String> orderDelete(OrderAdapter<Order, UUID> adapter) {
+        return new DeleteOrderImpl(adapter);
     }
 
 }

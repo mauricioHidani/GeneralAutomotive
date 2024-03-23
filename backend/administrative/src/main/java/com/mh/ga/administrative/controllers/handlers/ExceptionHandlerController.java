@@ -16,10 +16,8 @@ import java.time.Instant;
 public class ExceptionHandlerController {
 
     @ExceptionHandler(IllegalArgumentException.class)
-    public ResponseEntity<StandardErrorResponse> illegalArgument(
-            IllegalArgumentException exception,
-            HttpServletRequest request
-    ) {
+    public ResponseEntity<StandardErrorResponse> illegalArgument(IllegalArgumentException exception,
+                                                                 HttpServletRequest request) {
         HttpStatus status = HttpStatus.BAD_REQUEST;
         StandardErrorResponse response = new StandardErrorResponse(
                 Instant.now(Clock.systemUTC()),
@@ -32,10 +30,8 @@ public class ExceptionHandlerController {
     }
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<StandardErrorResponse> resourceNotFound(
-            ResourceNotFoundException exception,
-            HttpServletRequest request
-    ) {
+    public ResponseEntity<StandardErrorResponse> resourceNotFound(ResourceNotFoundException exception,
+                                                                  HttpServletRequest request) {
         HttpStatus status = HttpStatus.NOT_FOUND;
         StandardErrorResponse response = new StandardErrorResponse(
                 Instant.now(Clock.systemUTC()),
@@ -48,10 +44,8 @@ public class ExceptionHandlerController {
     }
 
     @ExceptionHandler(DataIntegrityException.class)
-    public ResponseEntity<StandardErrorResponse> dataIntegrity(
-            DataIntegrityException exception,
-            HttpServletRequest request
-    ) {
+    public ResponseEntity<StandardErrorResponse> dataIntegrity(DataIntegrityException exception,
+                                                               HttpServletRequest request) {
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
         StandardErrorResponse response = new StandardErrorResponse(
                 Instant.now(Clock.systemUTC()),

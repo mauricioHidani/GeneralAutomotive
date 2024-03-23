@@ -21,7 +21,8 @@ public class UpdateAdministratorImpl
         this.adapter = adapter;
     }
 
-    @Override public AdministratorResponse execute(String id, AdministratorRequest request) {
+    @Override
+    public AdministratorResponse execute(String id, AdministratorRequest request) {
         if (id == null) {
             throw new IllegalArgumentException(
                     "Operation not valid on the requested system"

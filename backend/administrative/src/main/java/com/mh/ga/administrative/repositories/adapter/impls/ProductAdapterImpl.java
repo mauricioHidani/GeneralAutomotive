@@ -15,11 +15,14 @@ public class ProductAdapterImpl implements ProductAdapter<Product, UUID> {
         this.repository = repository;
     }
 
-    @Override public Product save(Product product) {
+    @Override
+    public Product save(Product product) {
         return repository.save(product);
     }
 
-    @Override public Optional<Product> findById(UUID id) {
+    @Override
+    public Optional<Product> findById(UUID id) {
         return repository.findById(id);
     }
+
 }

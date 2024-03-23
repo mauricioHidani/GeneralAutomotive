@@ -10,23 +10,31 @@ import java.util.UUID;
 @Service
 public class OrderService {
 
-    private final FindByIdOrder<UUID, OrderResponse> findById;
+    private final FindByIdOrder<String, OrderResponse> findById;
     private final SaveOrder<OrderRequest, OrderResponse> save;
+    private final DeleteOrder<String> delete;
 
-    public OrderService(FindByIdOrder<UUID, OrderResponse> findById,
-                        SaveOrder<OrderRequest, OrderResponse> save) {
+    public OrderService(FindByIdOrder<String, OrderResponse> findById,
+                        SaveOrder<OrderRequest, OrderResponse> save,
+                        DeleteOrder<String> delete) {
         this.findById = findById;
         this.save = save;
+        this.delete = delete;
     }
 
     @Transactional(readOnly = true)
-    public OrderResponse findById(UUID id) {
+    public OrderResponse findById(String id) {
         return findById.execute(id);
     }
 
     @Transactional
     public OrderResponse save(OrderRequest request) {
         return save.execute(request);
+    }
+
+    @Transactional
+    public void delete(String id) {
+        delete.execute(id);
     }
 
 }

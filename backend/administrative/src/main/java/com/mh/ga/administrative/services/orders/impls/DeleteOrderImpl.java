@@ -1,17 +1,17 @@
-package com.mh.ga.administrative.services.administrator.impls;
+package com.mh.ga.administrative.services.orders.impls;
 
-import com.mh.ga.administrative.models.entities.Administrator;
-import com.mh.ga.administrative.repositories.adapter.AdministratorAdapter;
-import com.mh.ga.administrative.services.administrator.DeleteAdministrator;
+import com.mh.ga.administrative.models.entities.Order;
+import com.mh.ga.administrative.repositories.adapter.OrderAdapter;
 import com.mh.ga.administrative.services.exceptions.ResourceNotFoundException;
+import com.mh.ga.administrative.services.orders.DeleteOrder;
 
 import java.util.UUID;
 
-public class DeleteAdministratorImpl implements DeleteAdministrator<String> {
+public class DeleteOrderImpl implements DeleteOrder<String> {
 
-    private final AdministratorAdapter<Administrator, UUID> adapter;
+    private final OrderAdapter<Order, UUID> adapter;
 
-    public DeleteAdministratorImpl(AdministratorAdapter<Administrator, UUID> adapter) {
+    public DeleteOrderImpl(OrderAdapter<Order, UUID> adapter) {
         this.adapter = adapter;
     }
 
@@ -36,11 +36,11 @@ public class DeleteAdministratorImpl implements DeleteAdministrator<String> {
 
         if (!adapter.existingById(validId)) {
             throw new ResourceNotFoundException(
-                    "Administrator not found with the requested information"
+                    "Order not found with the requested information"
             );
         }
 
-        adapter.delete(validId);
+        adapter.deleteById(validId);
     }
 
 }

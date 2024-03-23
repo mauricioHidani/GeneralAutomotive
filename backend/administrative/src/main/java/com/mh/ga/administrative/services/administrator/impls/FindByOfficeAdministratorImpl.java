@@ -20,7 +20,8 @@ public class FindByOfficeAdministratorImpl
         this.adapter = adapter;
     }
 
-    @Override public Page<AdministratorResponse> execute(String officeName, Pageable pageable) {
+    @Override
+    public Page<AdministratorResponse> execute(String officeName, Pageable pageable) {
         Page<Administrator> found;
 
         if (officeName == null) {

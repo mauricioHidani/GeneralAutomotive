@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 public class ProductFactory {
+
     public static Product createEntityWithID(UUID id) {
         return new Product(
                 id,
@@ -67,4 +68,5 @@ public class ProductFactory {
                 new BigDecimal("151.90")
         );
     }
+
 }
