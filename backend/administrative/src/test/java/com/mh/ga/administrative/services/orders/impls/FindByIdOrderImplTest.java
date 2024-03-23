@@ -24,7 +24,8 @@ class FindByIdOrderImplTest {
     private OrderAdapter<Order, UUID> adapter;
     private FindByIdOrderImpl useCase;
 
-    private UUID existingId, nonExistingId, invalidId;
+    private UUID existingId, nonExistingId;
+    private String invalidId;
     private Order entity;
     private OrderResponse response;
 
@@ -35,7 +36,7 @@ class FindByIdOrderImplTest {
 
         existingId = UUID.randomUUID();
         nonExistingId = UUID.randomUUID();
-        invalidId = null;
+        invalidId = "invalidId";
         entity = OrderFactory.createEntityWithId(existingId);
         response = OrderFactory.createResponseWithId(existingId);
 
@@ -46,7 +47,7 @@ class FindByIdOrderImplTest {
     @Test
     @DisplayName("FindById should return order response when successfull")
     void findById_shouldReturnOrderResponse_whenSuccessfull() {
-        OrderResponse result = useCase.execute(existingId);
+        OrderResponse result = useCase.execute(existingId.toString());
 
         assertNotNull(result);
         assertTrue(result instanceof OrderResponse);
@@ -65,6 +66,19 @@ class FindByIdOrderImplTest {
 
         Throwable result = assertThrows(
                 IllegalArgumentException.class,
+                () -> useCase.execute(null)
+        );
+
+        assertEquals(expectedErrorMessage, result.getMessage());
+    }
+
+    @Test
+    @DisplayName("FindByid should throw IllegalArgumentException when the ID is not valid, espacially for UUIDs")
+    void findByid_shouldThrowIllegalArgumentException_whenTheIdIsNotValidEspaciallyForUUIDs() {
+        String expectedErrorMessage = "Unable to proceed with the query with the requested information";
+
+        Throwable result = assertThrows(
+                IllegalArgumentException.class,
                 () -> useCase.execute(invalidId)
         );
 
@@ -78,7 +92,7 @@ class FindByIdOrderImplTest {
 
         Throwable result = assertThrows(
                 ResourceNotFoundException.class,
-                () -> useCase.execute(nonExistingId)
+                () -> useCase.execute(nonExistingId.toString())
         );
 
         assertEquals(expectedErrorMessage, result.getMessage());

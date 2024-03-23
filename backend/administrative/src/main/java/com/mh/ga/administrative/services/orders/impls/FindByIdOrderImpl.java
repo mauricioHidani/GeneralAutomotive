@@ -8,7 +8,7 @@ import com.mh.ga.administrative.services.orders.FindByIdOrder;
 
 import java.util.UUID;
 
-public class FindByIdOrderImpl implements FindByIdOrder<UUID, OrderResponse> {
+public class FindByIdOrderImpl implements FindByIdOrder<String, OrderResponse> {
 
     private final OrderAdapter<Order, UUID> adapter;
 
@@ -17,14 +17,25 @@ public class FindByIdOrderImpl implements FindByIdOrder<UUID, OrderResponse> {
     }
 
     @Override
-    public OrderResponse execute(UUID id) {
+    public OrderResponse execute(String id) {
+        UUID validId;
+
         if (id == null) {
             throw new IllegalArgumentException(
                     "Operation not valid on the requested system"
             );
         }
 
-        Order found = adapter.findById(id)
+        try {
+            validId = UUID.fromString(id);
+        }
+        catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException(
+                    "Unable to proceed with the query with the requested information"
+            );
+        }
+
+        Order found = adapter.findById(validId)
                 .orElseThrow(() -> new ResourceNotFoundException(
                         "Order not found with the requested information"
                 ));
