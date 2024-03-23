@@ -4,6 +4,7 @@ import com.mh.ga.administrative.models.entities.Order;
 import com.mh.ga.administrative.repositories.OrderRepository;
 import com.mh.ga.administrative.repositories.adapter.OrderAdapter;
 
+import java.util.Optional;
 import java.util.UUID;
 
 public class OrderAdapterImpl implements OrderAdapter<Order, UUID> {
@@ -12,6 +13,11 @@ public class OrderAdapterImpl implements OrderAdapter<Order, UUID> {
 
     public OrderAdapterImpl(OrderRepository repository) {
         this.repository = repository;
+    }
+
+    @Override
+    public Optional<Order> findById(UUID id) {
+        return repository.findById(id);
     }
 
     @Override
