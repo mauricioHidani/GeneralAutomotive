@@ -21,7 +21,7 @@ public class OrderController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<OrderResponse> findById(@PathVariable UUID id) {
+    public ResponseEntity<OrderResponse> findById(@PathVariable String id) {
         return ResponseEntity.ok(
                 service.findById(id)
         );
@@ -36,6 +36,12 @@ public class OrderController {
                 .buildAndExpand(result.id())
                 .toUri();
         return ResponseEntity.created(uri).body(result);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable String id) {
+        service.delete(id);
+        return ResponseEntity.noContent().build();
     }
 
 }
