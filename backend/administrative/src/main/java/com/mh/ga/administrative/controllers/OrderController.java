@@ -22,7 +22,9 @@ public class OrderController {
 
     @GetMapping("/{id}")
     public ResponseEntity<OrderResponse> findById(@PathVariable UUID id) {
-        throw new UnsupportedOperationException();
+        return ResponseEntity.ok(
+                service.findById(id)
+        );
     }
 
     @PostMapping
