@@ -3,7 +3,10 @@ package com.mh.ga.administrative.repositories.adapter.impls;
 import com.mh.ga.administrative.models.entities.Order;
 import com.mh.ga.administrative.repositories.OrderRepository;
 import com.mh.ga.administrative.repositories.adapter.OrderAdapter;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
+import java.time.Instant;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -18,6 +21,16 @@ public class OrderAdapterImpl implements OrderAdapter<Order, UUID> {
     @Override
     public boolean existingById(UUID id) {
         return repository.existsById(id);
+    }
+
+    @Override
+    public Page<Order> findAll(Pageable pageable) {
+        return repository.findAll(pageable);
+    }
+
+    @Override
+    public Page<Order> findByRegistered(Instant start, Instant end, Pageable pageable) {
+        return repository.findByRegisteredBetween(start, end, pageable);
     }
 
     @Override

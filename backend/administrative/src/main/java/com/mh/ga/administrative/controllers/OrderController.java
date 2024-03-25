@@ -3,11 +3,15 @@ package com.mh.ga.administrative.controllers;
 import com.mh.ga.administrative.models.transfers.OrderRequest;
 import com.mh.ga.administrative.models.transfers.OrderResponse;
 import com.mh.ga.administrative.services.orders.OrderService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
+import java.time.Instant;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/{orders}")
@@ -23,6 +27,15 @@ public class OrderController {
     public ResponseEntity<OrderResponse> findById(@PathVariable String id) {
         return ResponseEntity.ok(
                 service.findById(id)
+        );
+    }
+
+    @GetMapping
+    public ResponseEntity<Page<OrderResponse>> findByRegister(
+            @RequestParam(required = false) Map<String, String> registers,
+            Pageable pageable) {
+        return ResponseEntity.ok(
+                service.findByRegister(registers, pageable)
         );
     }
 

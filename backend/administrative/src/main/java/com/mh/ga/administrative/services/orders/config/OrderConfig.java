@@ -6,17 +6,19 @@ import com.mh.ga.administrative.models.transfers.OrderResponse;
 import com.mh.ga.administrative.repositories.OrderRepository;
 import com.mh.ga.administrative.repositories.adapter.OrderAdapter;
 import com.mh.ga.administrative.repositories.adapter.impls.OrderAdapterImpl;
-import com.mh.ga.administrative.services.orders.DeleteOrder;
-import com.mh.ga.administrative.services.orders.FindByIdOrder;
-import com.mh.ga.administrative.services.orders.SaveOrder;
-import com.mh.ga.administrative.services.orders.UpdateOrder;
+import com.mh.ga.administrative.services.orders.impls.FindByRegisterOrderImpl;
+import com.mh.ga.administrative.services.orders.*;
 import com.mh.ga.administrative.services.orders.impls.DeleteOrderImpl;
 import com.mh.ga.administrative.services.orders.impls.FindByIdOrderImpl;
 import com.mh.ga.administrative.services.orders.impls.SaveOrderImpl;
 import com.mh.ga.administrative.services.orders.impls.UpdateOrderImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
+import java.time.Instant;
+import java.util.Map;
 import java.util.UUID;
 
 @Configuration
@@ -30,6 +32,12 @@ public class OrderConfig {
     @Bean
     public FindByIdOrder<String, OrderResponse> orderFindById(OrderAdapter<Order, UUID> adapter) {
         return new FindByIdOrderImpl(adapter);
+    }
+
+    @Bean
+    public FindByRegisterOrder<Map<String, String>, Pageable, Page<OrderResponse>> orderFindByRegister(
+            OrderAdapter<Order, UUID> adapter) {
+        return new FindByRegisterOrderImpl(adapter);
     }
 
     @Bean
