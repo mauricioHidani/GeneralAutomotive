@@ -9,9 +9,11 @@ import com.mh.ga.administrative.repositories.adapter.impls.OrderAdapterImpl;
 import com.mh.ga.administrative.services.orders.DeleteOrder;
 import com.mh.ga.administrative.services.orders.FindByIdOrder;
 import com.mh.ga.administrative.services.orders.SaveOrder;
+import com.mh.ga.administrative.services.orders.UpdateOrder;
 import com.mh.ga.administrative.services.orders.impls.DeleteOrderImpl;
 import com.mh.ga.administrative.services.orders.impls.FindByIdOrderImpl;
 import com.mh.ga.administrative.services.orders.impls.SaveOrderImpl;
+import com.mh.ga.administrative.services.orders.impls.UpdateOrderImpl;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -33,6 +35,11 @@ public class OrderConfig {
     @Bean
     public SaveOrder<OrderRequest, OrderResponse> orderSave(OrderAdapter<Order, UUID> adapter) {
         return new SaveOrderImpl(adapter);
+    }
+
+    @Bean
+    public UpdateOrder<OrderRequest, String, OrderResponse> orderUpdate(OrderAdapter<Order, UUID> adapter) {
+        return new UpdateOrderImpl(adapter);
     }
 
     @Bean

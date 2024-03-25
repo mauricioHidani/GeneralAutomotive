@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import java.net.URI;
-import java.util.UUID;
 
 @RestController
 @RequestMapping("/{orders}")
@@ -36,6 +35,14 @@ public class OrderController {
                 .buildAndExpand(result.id())
                 .toUri();
         return ResponseEntity.created(uri).body(result);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<OrderResponse> update(@PathVariable(required = true) String id,
+                                                @RequestBody OrderRequest request) {
+        return ResponseEntity.ok(
+                service.update(id, request)
+        );
     }
 
     @DeleteMapping("/{id}")
