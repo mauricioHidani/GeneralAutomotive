@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.time.Clock;
+import java.time.DateTimeException;
 import java.time.Instant;
+import java.time.format.DateTimeParseException;
 
 @RestControllerAdvice
 public class ExceptionHandlerController {
@@ -33,6 +35,20 @@ public class ExceptionHandlerController {
     public ResponseEntity<StandardErrorResponse> resourceNotFound(ResourceNotFoundException exception,
                                                                   HttpServletRequest request) {
         HttpStatus status = HttpStatus.NOT_FOUND;
+        StandardErrorResponse response = new StandardErrorResponse(
+                Instant.now(Clock.systemUTC()),
+                status.value(),
+                status.name(),
+                exception.getMessage(),
+                request.getRequestURI()
+        );
+        return ResponseEntity.status(status).body(response);
+    }
+
+    @ExceptionHandler(DateTimeParseException.class)
+    public ResponseEntity<StandardErrorResponse> dateTimeParse(DateTimeParseException exception,
+                                                               HttpServletRequest request) {
+        HttpStatus status = HttpStatus.BAD_REQUEST;
         StandardErrorResponse response = new StandardErrorResponse(
                 Instant.now(Clock.systemUTC()),
                 status.value(),
