@@ -3,6 +3,9 @@ package com.mh.ga.administrative.models.transfers;
 import com.mh.ga.administrative.models.entities.Administrator;
 import com.mh.ga.administrative.models.entities.Order;
 import com.mh.ga.administrative.models.enums.OrderStatus;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import org.hibernate.validator.constraints.Length;
 
 import java.time.Instant;
 import java.util.Set;
@@ -11,10 +14,18 @@ import java.util.stream.Collectors;
 
 public record OrderRequest(
     String id,
+
+    @NotBlank(message = "This field is mandatory")
     String status,
+
+    @Length(max = 512, message = "This field must contain a valid number of caracters")
     String description,
+
+    @NotNull(message = "This field is mandatory")
     Instant registered,
+
     AdministratorIdentityRequest liable,
+
     Set<ProductIdentityRequest> inventory
 ) {
 

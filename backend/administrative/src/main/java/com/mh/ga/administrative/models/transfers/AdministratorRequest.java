@@ -2,10 +2,18 @@ package com.mh.ga.administrative.models.transfers;
 
 import com.mh.ga.administrative.models.entities.Administrator;
 import com.mh.ga.administrative.models.enums.Offices;
+import jakarta.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.Length;
 
 public record AdministratorRequest(
+    @NotBlank(message = "This field is mandatory")
     String document,
+
+    @NotBlank(message = "This field is mandatory")
+    @Length(min = 2, max = 128, message = "This field must contain a valid number of caracters")
     String fullName,
+
+    @NotBlank(message = "This field is mandatory")
     String office
 ) {
 
