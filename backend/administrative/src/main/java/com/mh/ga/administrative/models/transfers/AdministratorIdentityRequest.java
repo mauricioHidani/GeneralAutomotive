@@ -1,10 +1,12 @@
 package com.mh.ga.administrative.models.transfers;
 
 import com.mh.ga.administrative.models.entities.Administrator;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.UUID;
 
 public record AdministratorIdentityRequest(
+        @NotNull(message = "This field is mandatory")
         UUID id
 ) {
     public static Administrator toEntity(AdministratorIdentityRequest request) {

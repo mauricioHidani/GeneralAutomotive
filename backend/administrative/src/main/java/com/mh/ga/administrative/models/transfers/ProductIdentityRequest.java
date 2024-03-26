@@ -1,10 +1,12 @@
 package com.mh.ga.administrative.models.transfers;
 
 import com.mh.ga.administrative.models.entities.Product;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.UUID;
 
 public record ProductIdentityRequest(
+        @NotNull(message = "This field is mandatory")
         UUID id
 ) {
     public static Product toEntity(ProductIdentityRequest request) {
