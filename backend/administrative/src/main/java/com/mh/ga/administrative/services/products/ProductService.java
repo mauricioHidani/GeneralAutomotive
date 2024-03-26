@@ -12,11 +12,14 @@ public class ProductService {
 
     private final SaveProduct<ProductRequest, ProductResponse> save;
     private final FindByIdProduct<String, ProductResponse> findById;
+    private final DeleteProduct<String> delete;
 
     public ProductService(SaveProduct<ProductRequest, ProductResponse> save,
-                          FindByIdProduct<String, ProductResponse> findById) {
+                          FindByIdProduct<String, ProductResponse> findById,
+                          DeleteProduct<String> delete) {
         this.save = save;
         this.findById = findById;
+        this.delete = delete;
     }
 
     @Transactional
@@ -27,6 +30,11 @@ public class ProductService {
     @Transactional(readOnly = true)
     public ProductResponse findById(String id) {
         return findById.execute(id);
+    }
+
+    @Transactional
+    public void delete(String id) {
+        delete.execute(id);
     }
 
 }
