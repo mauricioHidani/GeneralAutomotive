@@ -21,8 +21,18 @@ public class ProductAdapterImpl implements ProductAdapter<Product, UUID> {
     }
 
     @Override
+    public boolean existingById(UUID id) {
+        return repository.existsById(id);
+    }
+
+    @Override
     public Optional<Product> findById(UUID id) {
         return repository.findById(id);
+    }
+
+    @Override
+    public void delete(UUID id) {
+        repository.deleteById(id);
     }
 
 }
