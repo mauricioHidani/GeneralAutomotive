@@ -3,6 +3,7 @@ package com.mh.ga.administrative.controllers;
 import com.mh.ga.administrative.models.transfers.AdministratorRequest;
 import com.mh.ga.administrative.models.transfers.AdministratorResponse;
 import com.mh.ga.administrative.services.administrator.AdministratorService;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.MediaType;
@@ -34,7 +35,7 @@ public class AdministratorController {
             value = "/doc",
             consumes = MediaType.TEXT_PLAIN_VALUE
     )
-    public ResponseEntity<AdministratorResponse> findByDoc(@RequestBody String document) {
+    public ResponseEntity<AdministratorResponse> findByDoc(@Valid @RequestBody String document) {
         return ResponseEntity.ok(
                 service.findByDoc(document)
         );
@@ -49,7 +50,7 @@ public class AdministratorController {
     }
 
     @PostMapping
-    public ResponseEntity<AdministratorResponse> save(@RequestBody AdministratorRequest request) {
+    public ResponseEntity<AdministratorResponse> save(@Valid @RequestBody AdministratorRequest request) {
         var response = service.save(request);
         var uri = ServletUriComponentsBuilder
                 .fromCurrentContextPath()
@@ -61,7 +62,7 @@ public class AdministratorController {
 
     @PutMapping("/{id}")
     public ResponseEntity<AdministratorResponse> update(@PathVariable String id,
-                                                        @RequestBody AdministratorRequest request) {
+                                                        @Valid @RequestBody AdministratorRequest request) {
         return ResponseEntity.ok(
                 service.update(id, request)
         );

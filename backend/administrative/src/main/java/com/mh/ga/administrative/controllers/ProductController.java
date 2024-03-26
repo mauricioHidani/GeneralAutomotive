@@ -3,6 +3,7 @@ package com.mh.ga.administrative.controllers;
 import com.mh.ga.administrative.models.transfers.ProductRequest;
 import com.mh.ga.administrative.models.transfers.ProductResponse;
 import com.mh.ga.administrative.services.products.ProductService;
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -31,7 +32,8 @@ public class ProductController {
     }
 
     @PostMapping
-    public ResponseEntity<ProductResponse> save(@RequestBody ProductRequest product) {        ProductResponse response = service.save(product);
+    public ResponseEntity<ProductResponse> save(@Valid @RequestBody ProductRequest product) {
+        ProductResponse response = service.save(product);
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequestUri()
                 .path("/{id}")

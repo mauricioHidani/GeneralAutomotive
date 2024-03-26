@@ -3,6 +3,7 @@ package com.mh.ga.administrative.controllers;
 import com.mh.ga.administrative.models.transfers.OrderRequest;
 import com.mh.ga.administrative.models.transfers.OrderResponse;
 import com.mh.ga.administrative.services.orders.OrderService;
+import jakarta.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
@@ -40,7 +41,7 @@ public class OrderController {
     }
 
     @PostMapping
-    public ResponseEntity<OrderResponse> save(@RequestBody OrderRequest request) {
+    public ResponseEntity<OrderResponse> save(@Valid @RequestBody OrderRequest request) {
         OrderResponse result = service.save(request);
         URI uri = ServletUriComponentsBuilder
                 .fromCurrentRequestUri()
@@ -52,7 +53,7 @@ public class OrderController {
 
     @PutMapping("/{id}")
     public ResponseEntity<OrderResponse> update(@PathVariable(required = true) String id,
-                                                @RequestBody OrderRequest request) {
+                                                @Valid @RequestBody OrderRequest request) {
         return ResponseEntity.ok(
                 service.update(id, request)
         );
